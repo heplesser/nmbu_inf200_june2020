@@ -2,6 +2,11 @@
 # Created by https://www.gitignore.io/api/osx,linux,latex,python,pycharm,windows,jupyternotebooks
 # Edit at https://www.gitignore.io/?templates=osx,linux,latex,python,pycharm,windows,jupyternotebooks
 
+### Specific files
+lectures/my_verbose_module.py
+lectures/mystats.py
+lectures/run_stats.py
+
 ### Ignore data directory (images etc)
 */data/*
 
