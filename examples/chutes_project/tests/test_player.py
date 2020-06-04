@@ -18,17 +18,19 @@ __email__ = 'hans.ekkehard.plesser@nmbu.no'
 def test_single_step_one(mocker):
     '''
     Use mocked randint to test that a player makes a correct initial step
-    of length 1.
+    of length step_size.
     '''
 
+    step_size = 1
+
     # the next line replaces random.randint with a mock function
-    # returning 1 for the rest of this test.
-    mocker.patch('random.randint', return_value=1)
+    # returning step_size for the rest of this test.
+    mocker.patch('random.randint', return_value=step_size)
 
     b = Board(chutes=[], ladders=[])
     pl = Player(b)
     pl.move()
-    assert pl.position == 1
+    assert pl.position == step_size
 
 
 def test_multi_step_three(mocker):

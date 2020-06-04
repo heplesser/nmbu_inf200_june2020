@@ -126,12 +126,3 @@ def test_bact_death_z_test(set_params):
     Z = (n - mean) / math.sqrt(var)
     phi = 2 * stats.norm.cdf(-abs(Z))
     assert phi > ALPHA
-
-
-@pytest.mark.parametrize('key', ['p_death', ''
-                                            'p_divide'])
-def test_p_unchanged(key):
-    """
-    Ensure that class-level probabilities are unchanged by other tests.
-    """
-    assert getattr(Bacteria, key) == Bacteria.default_params[key]
