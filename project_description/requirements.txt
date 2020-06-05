@@ -6,6 +6,7 @@ numpy
 scipy
 pandas
 sphinx
+numpydoc
 pytest
 pytest-mock
 coverage

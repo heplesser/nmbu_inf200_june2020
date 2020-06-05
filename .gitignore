@@ -8,7 +8,7 @@ lectures/mystats.py
 lectures/run_stats.py
 
 ### Ignore data directory (images etc)
-*/data/*
+data/
 
 ### JupyterNotebooks ###
 # gitignore template for Jupyter Notebooks
@@ -486,8 +486,12 @@ coverage.xml
 .scrapy
 
 # Sphinx documentation
-docs/_build/
-_build/
+docs/_build
+
+# The following line is only needed if the docs directory is not at the
+# top level of the Github repo. This is the case for the nmbu_inf200_june2020
+# repository, but should not be the case for student repositories.
+**/docs/_build/
 
 # PyBuilder
 target/
