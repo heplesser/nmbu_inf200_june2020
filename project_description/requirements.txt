@@ -12,3 +12,5 @@ pytest-mock
 coverage
 numba
 cython
+ffmpeg
+
