@@ -17,7 +17,7 @@ ax5 = fig.add_subplot(2, 3, 6)
 axt = fig.add_axes([0.4, 0.8, 0.2, 0.2])  # llx, lly, w, h
 axt.axis('off')  # turn off coordinate system
 
-template = 'Count: {:5}'
+template = 'Count: {:5d}'
 txt = axt.text(0.5, 0.5, template.format(0),
                horizontalalignment='center',
                verticalalignment='center',
