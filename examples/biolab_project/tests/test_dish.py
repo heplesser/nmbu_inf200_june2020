@@ -56,6 +56,9 @@ class TestAgingCalls:
         assert len(set(pos_args)) == len(pos_args)
 
 
+# The following parameterization ensures that all tests in
+# the class run with (n_a, n_b)==(10, 20) and ==(30, 40)
+@pytest.mark.parametrize('n_a, n_b', [(10, 20), (30, 40)])
 class TestDeathDivision:
     """
     Tests for death and division.
@@ -65,9 +68,10 @@ class TestDeathDivision:
     """
 
     @pytest.fixture(autouse=True)
-    def create_dish(self):
-        self.n_a = 10
-        self.n_b = 20
+    def create_dish(self, n_a, n_b):
+        """Create dish with bacteria numbers supplied by fixture."""
+        self.n_a = n_a
+        self.n_b = n_b
         self.dish = Dish(self.n_a, self.n_b)
 
     @pytest.fixture
@@ -118,17 +122,17 @@ class TestDeathDivision:
         assert self.dish.get_num_a() == 0
         assert self.dish.get_num_b() == 0
 
-    @pytest.mark.parametrize("n_a, n_b, p_death",
-                             [[100, 200, 0.1],
-                              [100, 200, 0.9],
-                              [10, 20, 0.5]])
-    def test_death(self, reset_bacteria_defaults, n_a, n_b, p_death):
+    # Each value for p_death will be combined with each value
+    # of (n_a, n_b)
+    @pytest.mark.parametrize('p_death', [0.1, 0.9, 0.5])
+    def test_death(self, reset_bacteria_defaults, p_death):
 
         Bacteria.set_params({'p_death': p_death})
-        dish = Dish(n_a, n_b)
-        dish.death()
-        died_a = n_a - dish.get_num_a()
-        died_b = n_b - dish.get_num_b()
+        n_a0 = self.dish.get_num_a()
+        n_b0 = self.dish.get_num_b()
+        self.dish.death()
+        died_a = n_a0 - self.dish.get_num_a()
+        died_b = n_b0 - self.dish.get_num_b()
 
-        assert binom_test(died_a, n_a, p_death) > ALPHA
-        assert binom_test(died_b, n_b, p_death) > ALPHA
+        assert binom_test(died_a, n_a0, p_death) > ALPHA
+        assert binom_test(died_b, n_b0, p_death) > ALPHA
