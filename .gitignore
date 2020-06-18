@@ -7,6 +7,18 @@ lectures/my_verbose_module.py
 lectures/mystats.py
 lectures/run_stats.py
 
+examples/c++/CyCppPrimes/primes.cpp
+examples/c++/CyCppPrimes/primes_cy.c
+examples/c++/biotop/biotop
+examples/c++/cprimes/primes_O0
+examples/c++/cprimes/primes_O3
+examples/c++/greeting/greeting
+examples/c++/hello/hello
+examples/c++/hello/hello_world.bc
+examples/c++/hello/hello_world.ii
+examples/c++/hello/hello_world.o
+examples/c++/hello/hello_world.s
+
 ### Ignore data directory (images etc)
 data/
 
