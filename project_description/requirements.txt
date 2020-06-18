@@ -13,4 +13,5 @@ coverage
 numba
 cython
 ffmpeg
+seaborn
 
